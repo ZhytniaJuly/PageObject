@@ -21,4 +21,12 @@ public class CoachPageView {
     public String getName (){
         return (driver.findElement(name).getText());
     }
+
+    public boolean coachNameIsPresentAtPersonalPage(String coach){
+        return driver.findElement(name).getText().contains(coach);
+
+    }
+
+
 }
+
