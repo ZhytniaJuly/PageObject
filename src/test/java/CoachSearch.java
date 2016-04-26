@@ -71,5 +71,26 @@ public class CoachSearch extends BaseClass {
         assertEquals(title, blogPageView.getTitle());
     }
 
+    @Test
+    public void waitLol() throws Exception {
+        teamPageView = new TeamPageView(driver);
+        teamPageView.goToTeamPage();
+        teamPageView.waitToContextIsLoaded();
 
+    }
+
+    @Test
+    public void waitAlert() throws Exception {
+        teamPageView = new TeamPageView(driver);
+        teamPageView.goToTeamPage();
+        teamPageView.waitToAlert();
+
+    }
+    @Test
+    public void callJavaScriptAlert() throws Exception {
+        teamPageView = new TeamPageView(driver);
+        teamPageView.goToTeamPage();
+        teamPageView.callJavaScript();
+        teamPageView.waitToAlert();
+    }
 }
