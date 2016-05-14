@@ -1,5 +1,6 @@
 import Pages.BlogPageView;
 import Pages.CoachPageView;
+import Pages.MainPageView;
 import org.junit.Test;
 import Pages.TeamPageView;
 
@@ -71,6 +72,9 @@ public class CoachSearch extends BaseClass {
         assertEquals(title, blogPageView.getTitle());
     }
 
+
+
+    // must failing
     @Test
     public void waitLol() throws Exception {
         teamPageView = new TeamPageView(driver);
@@ -86,11 +90,20 @@ public class CoachSearch extends BaseClass {
         teamPageView.waitToAlert();
 
     }
+
     @Test
     public void callJavaScriptAlert() throws Exception {
         teamPageView = new TeamPageView(driver);
         teamPageView.goToTeamPage();
-        teamPageView.callJavaScript();
-        teamPageView.waitToAlert();
+        assertEquals("Ольга Симчак", teamPageView.callJavascriptAlert());
+    }
+
+    @Test
+    public void alertAccept() throws Exception {
+        teamPageView = new TeamPageView(driver);
+        teamPageView.goToTeamPage();
+        teamPageView.callJavascript();
+        assertEquals("hello world", teamPageView.getTextFromAlert());
+        teamPageView.pressOkButtonOnAlert();
     }
 }

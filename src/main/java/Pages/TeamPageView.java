@@ -26,8 +26,8 @@ public class TeamPageView {
     }
 
     public void goToTeamPage() {
-           driver.findElement(ourTeam).click();
-       }
+        driver.findElement(ourTeam).click();
+    }
 
     public List<String> getAllCoachNames() {
         List coachCards = new ArrayList();
@@ -52,24 +52,36 @@ public class TeamPageView {
         }
     }
 
-    public void waitToContextIsLoaded(){
+    public void waitToContextIsLoaded() {
         driver.findElement(nameFieldInsideCard);
-        WebDriverWait webDriverWait = new WebDriverWait(driver,20);
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
         webDriverWait.until(ExpectedConditions.textToBe(nameFieldInsideCard, "lol"));
     }
 
-    public void waitToAlert(){
-
-        WebDriverWait webDriverWait = new WebDriverWait(driver,20);
+    public void waitToAlert() {
+        driver.findElement(nameFieldInsideCard);
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
         webDriverWait.until(ExpectedConditions.alertIsPresent());
     }
 
-    public void callJavaScript(){
+    public void callJavascript() {
         ((JavascriptExecutor) driver).executeScript("alert('hello world');");
     }
+
+
+    public String callJavascriptAlert() {
+        WebElement element = (WebElement) ((JavascriptExecutor) driver)
+                .executeScript("return document.getElementsByClassName('name')[0];");
+        return element.getText();
     }
 
-
+    public void pressOkButtonOnAlert(){
+        driver.switchTo().alert().accept();
+    }
+    public String getTextFromAlert(){
+        return driver.switchTo().alert().getText();
+    }
+}
 
 
 
